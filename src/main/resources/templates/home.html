@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <title>Welcome to Fuel Consumptions Project</title>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h3>Welcome to Fuel Consumptions Project</h3>
+  <hr>
+
+  <div class="container border border-info rounded bg-info" style="padding: 10px;">
+    <span>
+      First of all thanks for visiting! :)
+      <br>
+      This is a small project to exhibit some of my abilities using Java and Spring, as I am intending to do a career change to Software Development.
+      <br><br>
+      Regarding this project you will be able to reach every endpoint that I created only if you log in as an Employee. To do so you can use the following credentials:
+      <br>
+      Username: Employee
+      <br>
+      Password: Employee
+      <br><br>
+
+      You can also log in as a Visitor by creating a new account (there is the ability to upgrade each account to have the role of Employee too), or if you want you can use the following credentials:
+      <br>
+      Username: Visitor
+      <br>
+      Password: Visitor
+      <br><br>
+      Once again thanks for visiting!
+      <br>
+      PS: You can reach out to TsialkoutisV@gmail.com for any feedback or suggestions :)
+
+    </span>
+  </div>
+
+  <br>
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <a th:href="@{/login}" class="btn btn-warning btn-sm mb-3">
+        Login
+      </a>
+    </div>
+
+    <div class="col-md-6">
+      <a th:href="@{/register}" class="btn btn-success btn-sm mb-3">
+        Register
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

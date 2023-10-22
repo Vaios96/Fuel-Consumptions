@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Save Fuel Consumption</title>
+</head>
+<body>
+
+<div class="container">
+
+    <h3>Fuel Consumptions Directory</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save Fuel Consumption - Choose Manufacturer</p>
+
+        <form th:action="@{/fuel-consumptions/add/fuel-consumption-details}" method="GET">
+            <div>
+                Choose Manufacturer:
+                <select name="chosenManufacturer" id="chosenManufacturer">
+                    <option th:each="tempManufacturer : ${manufacturers}"
+                            th:value="${tempManufacturer.id}"
+                            th:text="${tempManufacturer.manufacturerName}">Manufacturer Name</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-info col-2">Next</button>
+        </form>
+
+    <hr>
+
+    <a th:href="@{/fuel-consumptions/list}">Back to Fuel Consumptions List</a>
+
+
+</div>
+
+</body>
+
+</html>

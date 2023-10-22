@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <title>Roles Directory</title>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h3>Roles Directory</h3>
+  <hr>
+
+
+  <div class="row">
+
+    <!-- Go To Manufacturer button -->
+    <div class="col-md-6">
+      <a th:href="@{/manufacturers/list}" class="btn btn-primary btn-sm mb-3">
+        Manufacturers
+      </a>
+    </div>
+
+    <!-- Go To Model button -->
+    <div class="col-md-6">
+      <a th:href="@{/models/list}" class="btn btn-primary btn-sm mb-3">
+        Models
+      </a>
+    </div>
+
+    <!-- Go To Fuel Consumptions button -->
+    <div class="col-md-6">
+      <a th:href="@{/fuel-consumptions/list}" class="btn btn-primary btn-sm mb-3">
+        Fuel Consumptions
+      </a>
+    </div>
+
+    <!-- Change Password -->
+    <div class="col-md-6">
+      <a th:href="@{/user/change-password}" class="btn btn-warning btn-sm mb-3">
+        Change Your Password
+      </a>
+    </div>
+
+    <!-- Logout button -->
+    <div class="col-md-6">
+      <form action="#" th:action="@{/logout}" method="POST">
+        <input type="submit" value="Logout" class="btn btn-warning btn-sm mb-3" />
+      </form>
+    </div>
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+      <th>User</th>
+      <th>Roles</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="tempUser : ${users}">
+
+      <td th:text="${tempUser.username}" />
+      <td>
+        <ul>
+          <li th:each="role : ${tempUser.roles}" th:text="${role.role}"></li>
+        </ul>
+      </td>
+      <td>
+        <!-- Make user an employee -->
+        <form th:action="@{/roles/addEmployee}" method="POST">
+          <input type="hidden" name="userId" th:value="${tempUser.id}" />
+          <button th:if="${#lists.size(tempUser.roles) == 1}" type="submit" class="btn btn-success btn-sm">Add Employee Role</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+</body>
+</html>

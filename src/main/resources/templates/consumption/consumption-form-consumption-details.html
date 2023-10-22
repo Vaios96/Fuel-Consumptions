@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <title>Save Fuel Consumption</title>
+</head>
+<body>
+
+<div class="container">
+
+  <h3>Fuel Consumptions Directory</h3>
+  <hr>
+
+  <p class="h4 mb-4">Save Fuel Consumption</p>
+
+  <form action="#" th:action="@{/fuel-consumptions/add/save}" th:object="${fuelConsumption}" method="POST">
+
+    <div>
+      <select th:field="*{model.id}">
+        <option th:each="tempModel : ${models}"
+                th:if="${tempModel.manufacturer.id == chosenManufacturer.id}"
+                th:value="${tempModel.id}"
+                th:text="${tempModel.modelName}">Model Name</option>
+      </select>
+    </div>
+
+    <div>
+      Year of Manufacture: <input type="number" th:field="*{modelYear}" class="form-control mb-4 w-25" placeholder="XXXX">
+      <!-- Add error message (if present) -->
+      <span th:if="${#fields.hasErrors('modelYear')}"
+            th:errors="*{modelYear}"
+            class="text-danger">
+      </span>
+    </div>
+
+    <div>
+      Consumption Rate: <input type="number" step="0.01" th:field="*{consumptionRate}" class="form-control mb-4 w-25" placeholder="X.XX">
+      <!-- Add error message (if present) -->
+      <span th:if="${#fields.hasErrors('consumptionRate')}"
+            th:errors="*{consumptionRate}"
+            class="text-danger">
+      </span>
+    </div>
+
+    <button type="submit" class="btn btn-info col-2">Save</button>
+
+  </form>
+
+  <hr>
+
+  <a th:href="@{/fuel-consumptions/list}">Back to Fuel Consumptions List</a>
+
+
+</div>
+
+</body>
+
+</html>

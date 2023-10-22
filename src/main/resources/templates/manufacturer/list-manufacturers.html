@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <title>Manufacturer Directory</title>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h3>Manufacturer Directory</h3>
+  <hr>
+
+  <div class="row">
+    <!-- Add a Manufacturer button -->
+    <div class="col-md-6">
+      <a th:href="@{/manufacturers/add}" class="btn btn-primary btn-sm mb-3">
+        Add Manufacturer
+      </a>
+    </div>
+
+    <!-- Go To Model button -->
+    <div class="col-md-6">
+      <a th:href="@{/models/list}" class="btn btn-primary btn-sm mb-3">
+        Models
+      </a>
+    </div>
+
+    <!-- Go To Fuel Consumptions button -->
+    <div class="col-md-6">
+      <a th:href="@{/fuel-consumptions/list}" class="btn btn-primary btn-sm mb-3">
+        Fuel Consumptions
+      </a>
+    </div>
+
+    <!--Go To Role button -->
+    <div class="col-md-6">
+      <a th:href="@{/roles/list}" class="btn btn-primary btn-sm mb-3">
+        User's Roles
+      </a>
+    </div>
+
+    <!-- Change Password -->
+    <div class="col-md-6">
+      <a th:href="@{/user/change-password}" class="btn btn-warning btn-sm mb-3">
+        Change Your Password
+      </a>
+    </div>
+
+    <!-- Logout button -->
+    <div class="col-md-6">
+      <form action="#" th:action="@{/logout}" method="POST">
+        <input type="submit" value="Logout" class="btn btn-warning btn-sm mb-3" />
+      </form>
+    </div>
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+      <th>Manufacturer</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="tempManufacturer : ${manufacturers}">
+
+      <td th:text="${tempManufacturer.manufacturerName}" />
+
+      <td>
+        <a th:href="@{/manufacturers/update(manufacturerId=${tempManufacturer.id})}" class="btn btn-info btn-sm">
+          Update
+        </a>
+
+        <a th:href="@{/manufacturers/delete(manufacturerId=${tempManufacturer.id})}" class="btn btn-danger btn-sm" onclick="if (!(confirm('Are you sre you want to delete this manufacturer?'))) return false">
+          Delete
+        </a>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+</body>
+</html>
